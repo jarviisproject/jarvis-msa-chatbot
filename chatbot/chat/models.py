@@ -9,6 +9,9 @@ import tensorflow_datasets as tfds
 import tensorflow as tf
 
 
+
+
+
 class Transformer:
     def __init__(self):
         self.max_length = 20
