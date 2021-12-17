@@ -19,10 +19,13 @@ class Chatmodel:
         print('말뭉치 데이터 읽기')
         question_data = pd.read_csv('./data/intent_data.csv')
         question_data = question_data['Q']
-        print(len(question_data))
+        print(question_data)
         print('데이터 읽기 완료: ', time.time() - start)
 
-        komoran = Komoran(userdic='./data')
+        komoran = Komoran(userdic='./data/user_nng.tsv')
+
+        docs = [komoran.nouns(sentence) for sentence in question_data]
+        print(docs)
 
 
 

@@ -1,11 +1,11 @@
 Q,label
 날씨 알려주겠니,weather
 날씨 정보 알려주세요,weather
-그 때 기온 어떨까,weather
-그 때 기온 좋으려나,weather
-기온 어떨 것 같은데,weather
+그때 기온 어떨까,weather
+그때 기온 좋으려나,weather
+기온 어떨것 같은데,weather
 기온 어때,weather
-기온 말해줄래,weather
+기온 말 해줄래,weather
 기온 어떠니,weather
 구름 많이 꼈나,weather
 기온 어떠냐,weather
@@ -229,8 +229,8 @@ Q,label
 개발 추천 리스트 좀,suggestion
 개발자를 공부하고 싶은데 어떤 걸 준비해야 할까,suggestion
 난 파이썬 개발자가 되고 싶은데 뭘 준비 할까,suggestion
-난 자바 개발자가 되고 싶어 뭘 준히해야되,suggestion
-자바 개발자 추천 목록 좀,suggestion
+난 자바 개발자가 되고 싶어 뭘 준비 해야되,suggestion
+자바 교육 일정 알려줘,suggestion
 나의 추천 목록 보여줘,suggestion
 내꺼 추천 목록 좀 보여줄래,suggestion
 추천 목록 보여줘,suggestion
@@ -238,7 +238,7 @@ Q,label
 다이어트 추천 목록,suggestion
 개발자 추천 목록,suggestion
 여행지 추천 좀 보여줘,suggestion
-개발가가 꿈인데 뭘 해야 될까 ,suggestion
+개발자가 꿈인데 뭘 해야 될까 ,suggestion
 이번 달 추천 목록 좀 보여줄래,suggestion
 다음 달 추천 목록 좀 보여줄래,suggestion
 오늘의 추천 목록 보여줘,suggestion
@@ -249,7 +249,7 @@ Q,label
 난 서버 개발자가 되고 싶은데 추천 목록 좀,suggestion
 자격증 추천 해줄만 한거 있나,suggestion
 자격증 추천,suggestion
-개발가 추천 목록 좀 보여줘,suggestion
+개발자 추천 목록 좀 보여줘,suggestion
 개발자가 되기위해선 뭐가 필요해,suggestion
 다이어트 음식 추천 해줘,suggestion
 살을 빼고 싶은데 방법 추천 좀 해줘,suggestion
