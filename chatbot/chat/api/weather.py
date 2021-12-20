@@ -146,9 +146,7 @@ class Weather(object):
 
 if __name__ == '__main__':
     w = Weather()
-    today = dt.datetime.now() + dt.timedelta(days=1)
-    tom = str(today)[0:4]+str(today)[5:7]+str(today)[8:10]
+    today = dt.datetime.now() + dt.timedelta(days=1) # 오늘 날씨
+    tom = str(today)[0:4]+str(today)[5:7]+str(today)[8:10] # 내일 날씨
     print(str(today)[0:4]+str(today)[5:7]+str(today)[8:10])
     print(w.weather_pre()[tom])
-    # print('*'*100)
-    # print(w.weather_now())
