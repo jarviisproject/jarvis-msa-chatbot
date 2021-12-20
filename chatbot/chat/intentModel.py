@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     intent = IntentModel(model_name='./model/intent_model.h5', proprocess=p)
 
-    question = '내일 일정은 어때'
+    question = '내일 뭐할까?'
 
     predict = intent.predict_class(question)
     predict_label = intent.labels[predict]
