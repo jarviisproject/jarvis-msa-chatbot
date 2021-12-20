@@ -1,5 +1,5 @@
 # 챗봇 사전 파일 생성
-from test_intent_model import Preprocess
+from chat.test.test_intent_model import Preprocess
 from tensorflow.keras import preprocessing
 import pickle
 

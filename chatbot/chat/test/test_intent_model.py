@@ -16,7 +16,7 @@ class Classificationmodel:
         start = time.time()
 
         print('말뭉치 데이터 읽기')
-        question_data = pd.read_csv('./data/intent_data.csv')
+        question_data = pd.read_csv('../data/intent_data.csv')
         question_data = question_data['Q']
         print(question_data)
         print('데이터 읽기 완료: ', time.time() - start)
@@ -111,7 +111,7 @@ class Classificationmodel:
 
     def execute_predict(self):
         # 데이터 읽어오기
-        train_file = "./data/intent_data.csv"
+        train_file = "../data/intent_data.csv"
         data = pd.read_csv(train_file, delimiter=',')
         features = data['Q'].tolist()
         labels = data['label'].tolist()
@@ -130,7 +130,7 @@ class Classificationmodel:
         test_ds = ds.take(2000).batch(20)  # 테스트 데이터셋
 
         # 감정 분류 CNN 모델 불러오기
-        model = load_model('model/cl_model.h5')
+        model = load_model('../model/cl_model.h5')
         model.summary()
         model.evaluate(test_ds, verbose=2)
 
