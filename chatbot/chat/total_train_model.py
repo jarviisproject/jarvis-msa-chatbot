@@ -84,7 +84,7 @@ class Intent_model_create():
 
 
 if __name__ == '__main__':
-    im = Intent_model()
+    im = Intent_model_create()
     im.execute()
 
 

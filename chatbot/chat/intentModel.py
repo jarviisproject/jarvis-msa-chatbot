@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras import preprocessing
-from preprocess import Preprocess
+from chat.preprocess import Preprocess
 
 
 class IntentModel:
