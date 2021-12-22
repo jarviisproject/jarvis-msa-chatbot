@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from chat.intentModel import IntentModel
 from chat.preprocess import Preprocess
 import datetime as dt
+import requests
 
 from myWeather.models import Weather, weather_question
 
@@ -32,13 +33,33 @@ def question(request):
             elif we == '흐림':
                 return JsonResponse({'answer': f'날씨는 {we} 입니다. 비가 올지도 모르니 조심하세요'})
         elif predict_label == 'suggestion':
+
             return JsonResponse({'suggestion' : 'success'})
         elif predict_label == 'todo':
+            gs = get_suggestion(question)
             return JsonResponse({'todo': 'success'})
     except:
         return JsonResponse({'question' : "fail"})
 
 
-
-
+def get_suggestion(question):
+    q = question['question']
+    if '오늘' in q:
+        url = f'http://192.168.0.73:8000/api/date/{date}'
+        response = requests.get(url)
+        data = response.json()
+        top3 = data[:3]
+        return top3
+    elif '내일' in q:
+        url = f'http://192.168.0.73:8000/api/date/{date}'
+        response = requests.get(url)
+        data = response.json()
+        top3 = data[:3]
+        return top3
+    elif '내일' in q:
+        url = f'http://192.168.0.73:8000/api/date/{date}'
+        response = requests.get(url)
+        data = response.json()
+        top3 = data[:3]
+        return top3
 

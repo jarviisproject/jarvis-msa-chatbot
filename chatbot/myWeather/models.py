@@ -143,30 +143,25 @@ class Weather(object):
         else:
             return '데이터 없음'
 
+
 def weather_question(question):
     try:
         w = Weather()
         q = question['question']
         print(q)
         if "오늘" in q:
-            today = dt.datetime.now() + dt.timedelta()
-            tom = str(today)[0:4] + str(today)[5:7] + str(today)[8:10]
-            return w.weather_pre()[tom]
-        elif "내일" in q:
             today = dt.datetime.now() + dt.timedelta(days=1)
             tom = str(today)[0:4] + str(today)[5:7] + str(today)[8:10]
             return w.weather_pre()[tom]
-        elif "모레" in q:
+        elif "내일" in q:
             today = dt.datetime.now() + dt.timedelta(days=2)
+            tom = str(today)[0:4] + str(today)[5:7] + str(today)[8:10]
+            return w.weather_pre()[tom]
+        elif "모레" in q:
+            today = dt.datetime.now() + dt.timedelta(days=3)
             tom = str(today)[0:4] + str(today)[5:7] + str(today)[8:10]
             return w.weather_pre()[tom]
     except:
         return "날씨를 알 수 없습니다."
 
 
-if __name__ == '__main__':
-    w = Weather()
-    today = dt.datetime.now() + dt.timedelta(days=1) # 오늘 날씨
-    tom = str(today)[0:4]+str(today)[5:7]+str(today)[8:10] # 내일 날씨
-    print(str(today)[0:4]+str(today)[5:7]+str(today)[8:10])
-    print(w.weather_pre()[tom])
