@@ -15,11 +15,11 @@ def get_suggestion():
 def get_todolist():
     today = datetime.date.today()
     tom = today + datetime.timedelta(days=1)
-    url = f'http://192.168.219.105:8000/api/event/date/{tom}'
+    url = f'http://192.168.219.105:8000/api/event/list'
     response = requests.get(url)
     data = response.json()
     return data
 
 
 if __name__ == '__main__':
-    get_suggestion()
+    get_todolist()
