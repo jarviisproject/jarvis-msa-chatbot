@@ -5,11 +5,12 @@ import datetime as dt
 import requests
 import json
 from django.http import JsonResponse
-
+from chat.intentModel import IntentModel
+from chat.preprocess import Preprocess
 
 def weather_question(question):
     w = Weather()
-    q = question['question']
+    q = question['chatAnswer']
     if "오늘" in q:
         today = dt.datetime.now() + dt.timedelta(days=1)
         tom = str(today)[0:4] + str(today)[5:7] + str(today)[8:10]
@@ -27,7 +28,7 @@ def weather_question(question):
 
 
 def todo_answer(question):
-    q = question['question']
+    q = question['chatAnswer']
     f = open('chat/data/todo_data.json', encoding='UTF-8')
     # twoday = datetime.date.today() + datetime.timedelta(days=2)
     # tom = datetime.date.today() + datetime.timedelta(days=1)
@@ -62,7 +63,7 @@ def todo_answer(question):
 
 
 def suggestions_answer(question):
-    q = question['question']
+    q = question['chatAnswer']
     f = open('chat/data/suggestions.json', encoding='UTF-8')
     data = json.load(f)
     titles = []
@@ -124,7 +125,16 @@ def suggestions_answer(question):
 #         return ''
 
 
+class IntentChat:
+    def __init__(self):
+        self.p = Preprocess(word2index_dic='chat/model/chatbot3_dict.bin', userdic='chat/model/user_nng.tsv')
+        self.intent = IntentModel(model_name='chat/model/intent_model.h5', proprocess=self.p)
 
+    def predictModel(self, question):
+        return self.intent.predict_class(question)
+
+    def predic_label(self, predict):
+        return self.intent.labels[self.predictModel(predict)]
 
 
 if __name__ == '__main__':

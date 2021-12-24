@@ -27,6 +27,7 @@ class IntentModel:
         predict_class = tf.math.argmax(predict, axis=1)
         return predict_class.numpy()[0]
 
+
 if __name__ == '__main__':
     p = Preprocess(word2index_dic='./model/chatbot3_dict.bin', userdic='./model/user_nng.tsv')
 

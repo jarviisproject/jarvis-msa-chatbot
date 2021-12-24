@@ -8,6 +8,7 @@ from chat.preprocess import Preprocess
 import datetime as dt
 import requests
 from chat.process import weather_question, todo_answer, suggestions_answer
+from chat.process import IntentChat
 
 p = Preprocess(word2index_dic='chat/model/chatbot3_dict.bin', userdic='chat/model/user_nng.tsv')
 intent = IntentModel(model_name='chat/model/intent_model.h5', proprocess=p)
@@ -15,29 +16,30 @@ intent = IntentModel(model_name='chat/model/intent_model.h5', proprocess=p)
 
 @api_view(['POST'])
 @parser_classes([JSONParser])
-def question(request):
+def answer(request):
     question = request.data
-    print(type(question['question']))
-    predict = intent.predict_class(question['question'])
+    chatkey = question['chatkey']
+    print(request.data)
+    predict = intent.predict_class(question['chatAnswer'])
     predict_label = intent.labels[predict]
+    # predict = IntentChat.predictModel(question['question'])
+    # predict_label = IntentChat.predic_label(predict)
     print(f'의도 예측 클래스 : {predict}')
     print(f'의도 예측 레이블 : {predict_label}')
     if predict_label == 'weather':
         we = weather_question(question)
         if we == '맑음':
-            return JsonResponse({'answer': f'날씨는 {we} 입니다. 야외활동하기 좋은 날씨네요'})
+            return JsonResponse({'chatAnswer': f'날씨는 {we} 입니다. 야외활동하기 좋은 날씨네요', 'chatKey': chatkey})
         elif we == '구름 많음':
-            return JsonResponse({'answer': f'날씨는 {we} 입니다. 실내 활동을 하시면 좋을거 같네요'})
+            return JsonResponse({'chatAnswer': f'날씨는 {we} 입니다. 실내 활동을 하시면 좋을거 같네요', 'chatKey': chatkey})
         elif we == '흐림':
-            return JsonResponse({'answer': f'날씨는 {we} 입니다. 비가 올지도 모르니 조심하세요'})
+            return JsonResponse({'chatAnswer': f'날씨는 {we} 입니다. 비가 올지도 모르니 조심하세요', 'chatKey': chatkey})
     elif predict_label == 'suggestion':
         getsug = suggestions_answer(question)
-        return JsonResponse({'suggestion': getsug})
+        return JsonResponse({'chatAnswer': getsug, 'chatKey': chatkey})
     elif predict_label == 'todo':
         gs = todo_answer(question)
-        return JsonResponse({'answer': gs})
-
-
+        return JsonResponse({'chatAnswer': gs, 'chatKey': chatkey})
 
 
 
