@@ -18,8 +18,8 @@ intent = IntentModel(model_name='chat/model/intent_model.h5', proprocess=p)
 @parser_classes([JSONParser])
 def answer(request):
     question = request.data
-    chatkey = question['chatkey']
-    print(request.data)
+    print(question['chatKey'])
+    chatkey = question['chatKey']
     predict = intent.predict_class(question['chatAnswer'])
     predict_label = intent.labels[predict]
     # predict = IntentChat.predictModel(question['question'])
@@ -40,6 +40,7 @@ def answer(request):
     elif predict_label == 'todo':
         gs = todo_answer(question)
         return JsonResponse({'chatAnswer': gs, 'chatKey': chatkey})
+        # return JsonResponse({'chatAnswer': gs})
 
 
 

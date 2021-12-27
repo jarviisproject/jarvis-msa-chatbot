@@ -1,0 +1,14 @@
+.User-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  width: 143vh;
+  margin-left: -246px;
+  font-family: 'Montserrat', sans-serif;
+}
+/*# sourceMappingURL=UserRegister.css.map */

@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from chat.intentModel import IntentModel
 from chat.preprocess import Preprocess
 
+
 def weather_question(question):
     w = Weather()
     q = question['chatAnswer']
