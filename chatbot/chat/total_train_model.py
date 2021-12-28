@@ -16,8 +16,8 @@ class Intent_model_create():
         question = data['Q'].tolist()
         intent = data['label'].tolist()
 
-        p = Preprocess(word2index_dic='./data/chatbot3_dict.bin',
-                       userdic='./data/user_nng.tsv')
+        p = Preprocess(word2index_dic='./model/chatbot3_dict.bin',
+                       userdic='./model/user_nng.tsv')
 
         # 단어 시퀸스 생성
         sequences = []
@@ -44,7 +44,7 @@ class Intent_model_create():
         test_ds = ds.skip(train_size + val_size).take(test_size).batch(20)
 
         # 하이퍼파라미터 설정
-        dropout_prob = 0.5
+        dropout_prob = 0.75
         EMB_SIZE = 128
         EPOCH = 5
         VOCAB_SIZE = len(p.word_index) + 1
@@ -80,7 +80,7 @@ class Intent_model_create():
         print(f'loss : {loss}')
 
         # 모델 저장
-        model.save('intent_model.h5')
+        model.save('intent_model_test.h5')
 
 
 if __name__ == '__main__':
